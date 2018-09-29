@@ -31,6 +31,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^1.0.0",
     "gh-pages": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
@@ -40,5 +41,9 @@
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.9"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.1.1",
+    "styled-components": "^3.4.9"
   }
 }
