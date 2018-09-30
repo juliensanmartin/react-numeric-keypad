@@ -4,50 +4,26 @@ import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 
 class Keypad extends Component {
-  // static propTypes = {
-  //   reportIqn: PropTypes.string,
-  //   theme: PropTypes.object
-  // };
+  static propTypes = {
+    buttons: PropTypes.array
+  };
+
+  static defaultProps = {
+    buttons: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  }
+
   state = { valueDisplayed: '' };
 
   render() {
     const { valueDisplayed } = this.state;
+    const { buttons } = this.props;
     return (
-      <MainContainer>
+      <>
         <KeypadContainer>
-          <Button variant="fab" onClick={() => this._updateDisplay(0)}>
-            0
-          </Button>
-          <Button variant="fab" onClick={() => this._updateDisplay(1)}>
-            1
-          </Button>
-          <Button variant="fab" onClick={() => this._updateDisplay(2)}>
-            2
-          </Button>
-          <Button variant="fab" onClick={() => this._updateDisplay(3)}>
-            3
-          </Button>
-          <Button variant="fab" onClick={() => this._updateDisplay(4)}>
-            4
-          </Button>
-          <Button variant="fab" onClick={() => this._updateDisplay(5)}>
-            5
-          </Button>
-          <Button variant="fab" onClick={() => this._updateDisplay(6)}>
-            6
-          </Button>
-          <Button variant="fab" onClick={() => this._updateDisplay(7)}>
-            7
-          </Button>
-          <Button variant="fab" onClick={() => this._updateDisplay(8)}>
-            8
-          </Button>
-          <Button variant="fab" onClick={() => this._updateDisplay(9)}>
-            9
-          </Button>
+          {this._renderButtons()}
         </KeypadContainer>
         <Display>{valueDisplayed}</Display>
-      </MainContainer>
+      </>
     );
   }
 
@@ -55,14 +31,22 @@ class Keypad extends Component {
     const { valueDisplayed } = this.state;
     this.setState({ valueDisplayed: valueDisplayed + value });
   };
-}
 
-const MainContainer = styled.div`
-  display: flex;
-`;
+  _renderButtons = () => {
+    const { buttons } = this.props;
+    return buttons.map(button => (
+      <Button mini key={button} variant="fab" onClick={() => this._updateDisplay(button)}>
+        {button}
+      </Button>
+    ));
+  }
+}
 
 const KeypadContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-evenly;
 `;
 
 const Display = styled.div`

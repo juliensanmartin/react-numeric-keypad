@@ -10,8 +10,8 @@ const App = () => (
 );
 
 const AppContainer = styled.div`
-  height: 500px;
-  width: 500px;
+  height: 30%;
+  width: 30%;
   border: 1px black solid;
 `;
 
